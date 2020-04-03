@@ -12,6 +12,7 @@ export default function Header(props) {
       <p>This dashboard is meant to help provide visualizations of U.S. State information related to the COVID-19 pandemic. 
         Select a state to view current and historical information as reported by various state and federal agencies. 
         All data is collected via API from <a href="https://covidtracking.com">The COVID Tracking Project</a>.</p>
+      <p>Feel free to help add on to this or learn more at <a href="https://github.com/LayaTaal/covid-state-dashboard">visiting my repo.</a></p>
     </div>
     <SelectState handler={handler} className="select-state" />
   </PageHeader>

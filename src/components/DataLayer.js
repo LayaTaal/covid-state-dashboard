@@ -72,6 +72,7 @@ export default function DataLayer(props) {
           <header>
             <h2 className="state-data__title">{stateInfo.name}</h2>
             <p>{stateInfo.notes}</p>
+            <p><b>Last Updated: {data[0]['dateChecked']}</b></p>
           </header>
         </div>
         <DataCharts>

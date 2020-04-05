@@ -29,13 +29,22 @@ export function PrepStacked(data) {
 export function PrepArea(data, field) {
   const preparedData = [];
 
-  data.forEach(day => {
+  data.forEach(row => {
+
+    const year = row['date'].toString().substring(0, 4);
+    const month = row['date'].toString().substring(4, 6);
+    const day = row['date'].toString().substring(6, 8);
+    const date = new Date(year, month, day);
+    console.log(year, month, day)
+
     preparedData.push({
-      x: day.date.toString(),
+      x: date,
       y: isNaN( day[field] ) ? 0 : day[field],
-      label: day.date,
+      label: date,
     });
   })
+
+  console.log(preparedData)
 
   
   return preparedData;

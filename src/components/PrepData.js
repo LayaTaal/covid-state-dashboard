@@ -34,7 +34,7 @@ export function PrepArea(data, field) {
     preparedData.push({
       x: row.date.toString(),
       y: isNaN( row[field] ) ? 0 : row[field],
-      label: row.date.toString(),
+      label: row[field],
     });
   })
   

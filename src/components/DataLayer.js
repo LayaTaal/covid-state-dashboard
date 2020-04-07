@@ -79,6 +79,9 @@ export default function DataLayer(props) {
           <BarChart data={data} dates={dates} field='negative' title='Tested Negative' />
           <BarChart data={data} dates={dates} field='positive' title='Tested Positive' />
           <BarChart data={data} dates={dates} field='death' title='Deaths Reported' />
+          <BarChart data={data} dates={dates} field='negativeIncrease' title='Daily Negative' />
+          <BarChart data={data} dates={dates} field='positiveIncrease' title='Daily Positive' />
+          <BarChart data={data} dates={dates} field='deathIncrease' title='Deaths per Day' />
         </DataCharts>
         <DataTable data={data} tableCols={tableCols} title='Historical Daily Data' />
       </DataContainer>

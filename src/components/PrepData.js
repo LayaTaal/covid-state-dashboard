@@ -31,27 +31,27 @@ export function PrepArea(data, field) {
 
   data.forEach(row => {
 
-    const year = row['date'].toString().substring(0, 4);
-    const month = row['date'].toString().substring(4, 6);
-    const day = row['date'].toString().substring(6, 8);
-    const date = new Date(year, month, day);
-    console.log(year, month, day)
-
     preparedData.push({
-      x: date,
-      y: isNaN( day[field] ) ? 0 : day[field],
-      label: date,
+      x: row.date.toString(),
+      y: isNaN( row[field] ) ? 0 : row[field],
+      label: row.date.toString(),
     });
   })
-
-  console.log(preparedData)
-
   
   return preparedData;
 
 }
-
   
 function percentIncrease(currentDailyIncrease, previousDailyIncrease) {
   return parseFloat(currentDailyIncrease / previousDailyIncrease * 100).toFixed(2);
+}
+
+export function FormatDate(date) {
+
+  const year = date.toString().substring(0, 4);
+  const month = date.toString().substring(4, 6);
+  const day = date.toString().substring(6, 8);
+  const formattedDate = new Date(year, month-1, day);
+
+  return formattedDate.toLocaleString('en-us', { month: 'short' });
 }

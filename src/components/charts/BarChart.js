@@ -1,5 +1,5 @@
 import React from 'react';
-import { PrepArea } from '../PrepData';
+import { PrepArea, FormatDate } from '../PrepData';
 import * as V from 'victory';
 import PropTypes from 'prop-types';
 
@@ -18,7 +18,6 @@ export default function BarChart(props) {
   }
 
   const xAxisStyles = {
-    display: 'none',
   }
 
   return (
@@ -43,7 +42,17 @@ export default function BarChart(props) {
         <V.VictoryAxis
           theme={V.VictoryTheme.material}
           standalone={false}
-          label="Day"
+          scale={{x: "time"}}
+          tickFormat={(date, index, allDates) => {
+            const currentDay = FormatDate(date);
+
+            if ( index === 0 ) {
+              return currentDay
+            }
+            
+            const previousDay = FormatDate(allDates[index - 1]);
+            return (currentDay === previousDay) ? '' : currentDay;
+          }}
           tickLabelComponent={
             <V.VictoryLabel style={xAxisStyles} />
           }

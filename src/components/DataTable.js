@@ -4,9 +4,6 @@ import styled from 'styled-components';
 
 export default function DataTable(props) {
   const { data, tableCols, title } = props;
-  
-  console.log(data);
-  console.log(tableCols);
 
   return (
     <React.Fragment>

@@ -33,7 +33,7 @@ export default function BarChart(props) {
           data={dataset}
           sortKey="x"
           sortOrder="descending"
-          barWidth={6}
+          barWidth={3}
           style={chartStyles}
           labelComponent={
             <V.VictoryTooltip />
@@ -43,6 +43,11 @@ export default function BarChart(props) {
           theme={V.VictoryTheme.material}
           standalone={false}
           scale={{x: "time"}}
+          style={{
+            grid: {
+              stroke: 'none',
+            }
+          }}
           tickFormat={(date, index, allDates) => {
             const currentDay = FormatDate(date);
 

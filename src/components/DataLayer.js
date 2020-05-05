@@ -15,12 +15,12 @@ const datasets = {
   stateDaily:
     {
       name: 'State Data',
-      endpoint: 'https://covidtracking.com/api/states/daily', // States daily time series
+      endpoint: 'https://covidtracking.com/api/v1/states', // States daily time series
     },
   stateInfo:
     {
       name: 'State Information',
-      endpoint: 'https://covidtracking.com/api/states/info', // State information
+      endpoint: 'https://covidtracking.com/api/v1/states/info.json', // State information
     },
   stateCurrent:
     {
@@ -43,10 +43,11 @@ export default function DataLayer(props) {
         fetch(stateInfoUrl)
           .then(response => response.json())
           .then(info => {
+            console.log(info)
             setStateInfo(info);
         });
 
-        const dataUrl = `${datasets.stateDaily.endpoint}?state=${stateCode}`;
+        const dataUrl = `${datasets.stateDaily.endpoint}/${stateCode}/daily.json`;
       
         fetch(dataUrl)
           .then(response => response.json())
@@ -59,7 +60,7 @@ export default function DataLayer(props) {
 
   }, [stateCode]);
   
-  if (stateInfo.hasOwnProperty('state') && data.length > 0) {
+  if (stateInfo.length > 0 && data.length > 0) {
     const dates = data.map(day => day.date);
 
     const tableCols = [

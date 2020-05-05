@@ -25,10 +25,7 @@ export default function BarChart(props) {
       {title && <h3 style={headerStyles}>{title}</h3>}
       <V.VictoryChart
       theme={V.VictoryTheme.material}
-      animate={{
-        duration: 2000,
-        onLoad: { duration: 1000 }
-      }}>
+      animate={false}>
         <V.VictoryBar 
           data={dataset}
           sortKey="x"
